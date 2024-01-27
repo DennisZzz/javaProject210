@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>MainMenuPanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainMenuPanel.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">ui</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">model</span><span class="s2">.</span><span class="s1">EventLog</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">model</span><span class="s2">.</span><span class="s1">Event</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">javax</span><span class="s2">.</span><span class="s1">swing</span><span class="s2">.</span><span class="s1">border</span><span class="s2">.</span><span class="s1">EmptyBorder</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">ActionListener</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">WindowAdapter</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">awt</span><span class="s2">.</span><span class="s1">event</span><span class="s2">.</span><span class="s1">WindowEvent</span><span class="s2">;</span>
+
+<span class="s3">// Represent a Main Menu of the GUI application, as an opening page of application</span>
+<span class="s0">public class </span><span class="s1">MainMenuPanel </span><span class="s0">extends </span><span class="s1">JFrame </span><span class="s0">implements </span><span class="s1">ActionListener </span><span class="s2">{</span>
+
+    <span class="s3">// MODIFIES: this</span>
+    <span class="s3">// EFFECTS: create a new Main Menu that has three button:</span>
+    <span class="s3">//          1. create a new account: lead to create account panel</span>
+    <span class="s3">//          2. select an old account: lead to select account panel</span>
+    <span class="s3">//          3. quit the application</span>
+    <span class="s0">public </span><span class="s1">MainMenuPanel</span><span class="s2">() {</span>
+        <span class="s0">super</span><span class="s2">(</span><span class="s4">&quot;Casino App Main Menu&quot;</span><span class="s2">);</span>
+        <span class="s1">setDefaultCloseOperation</span><span class="s2">(</span><span class="s1">DO_NOTHING_ON_CLOSE</span><span class="s2">);</span>
+        <span class="s1">setPreferredSize</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Dimension</span><span class="s2">(</span><span class="s5">350</span><span class="s2">,</span><span class="s5">250</span><span class="s2">));</span>
+        <span class="s2">((</span><span class="s1">JPanel</span><span class="s2">) </span><span class="s1">getContentPane</span><span class="s2">()).</span><span class="s1">setBorder</span><span class="s2">(</span><span class="s0">new </span><span class="s1">EmptyBorder</span><span class="s2">(</span><span class="s5">50</span><span class="s2">,</span><span class="s5">100</span><span class="s2">,</span><span class="s5">50</span><span class="s2">,</span><span class="s5">100</span><span class="s2">));</span>
+        <span class="s1">setLayout</span><span class="s2">(</span><span class="s0">new </span><span class="s1">FlowLayout</span><span class="s2">());</span>
+
+        <span class="s1">JButton create </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s4">&quot;Create new personal account&quot;</span><span class="s2">);</span>
+        <span class="s1">JButton select </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s4">&quot;Select your personal account&quot;</span><span class="s2">);</span>
+        <span class="s1">JButton quit </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JButton</span><span class="s2">(</span><span class="s4">&quot;Quit Casino application&quot;</span><span class="s2">);</span>
+
+        <span class="s1">create</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s4">&quot;Create&quot;</span><span class="s2">);</span>
+        <span class="s1">select</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s4">&quot;Select&quot;</span><span class="s2">);</span>
+        <span class="s1">quit</span><span class="s2">.</span><span class="s1">setActionCommand</span><span class="s2">(</span><span class="s4">&quot;Quit&quot;</span><span class="s2">);</span>
+
+        <span class="s1">create</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">select</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+        <span class="s1">quit</span><span class="s2">.</span><span class="s1">addActionListener</span><span class="s2">(</span><span class="s0">this</span><span class="s2">);</span>
+
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">create</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">select</span><span class="s2">);</span>
+        <span class="s1">add</span><span class="s2">(</span><span class="s1">quit</span><span class="s2">);</span>
+
+        <span class="s1">pack</span><span class="s2">();</span>
+        <span class="s1">setLocationRelativeTo</span><span class="s2">(</span><span class="s0">null</span><span class="s2">);</span>
+        <span class="s1">setVisible</span><span class="s2">(</span><span class="s0">true</span><span class="s2">);</span>
+        <span class="s1">setResizable</span><span class="s2">(</span><span class="s0">false</span><span class="s2">);</span>
+        <span class="s1">printEventLogWhenClose</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">printEventLogWhenClose</span><span class="s2">() {</span>
+        <span class="s1">addWindowListener</span><span class="s2">(</span><span class="s0">new </span><span class="s1">WindowAdapter</span><span class="s2">() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">windowClosing</span><span class="s2">(</span><span class="s1">WindowEvent e</span><span class="s2">) {</span>
+                <span class="s1">printLog</span><span class="s2">(</span><span class="s1">EventLog</span><span class="s2">.</span><span class="s1">getInstance</span><span class="s2">());</span>
+                <span class="s1">dispose</span><span class="s2">();</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">printLog</span><span class="s2">(</span><span class="s1">EventLog eventlog</span><span class="s2">) {</span>
+        <span class="s0">for </span><span class="s2">(</span><span class="s1">Event event </span><span class="s2">: </span><span class="s1">eventlog</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">event</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">());</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// EFFECTS: Follow the instruction of pressed button, create new panel, and dispose this panel</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">actionPerformed</span><span class="s2">(</span><span class="s1">ActionEvent e</span><span class="s2">) {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getActionCommand</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;Create&quot;</span><span class="s2">)) {</span>
+            <span class="s0">new </span><span class="s1">CreatePanel</span><span class="s2">();</span>
+            <span class="s1">dispose</span><span class="s2">();</span>
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getActionCommand</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;Select&quot;</span><span class="s2">)) {</span>
+            <span class="s0">new </span><span class="s1">SelectedPanel</span><span class="s2">();</span>
+            <span class="s1">dispose</span><span class="s2">();</span>
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">e</span><span class="s2">.</span><span class="s1">getActionCommand</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s4">&quot;Quit&quot;</span><span class="s2">)) {</span>
+            <span class="s1">printLog</span><span class="s2">(</span><span class="s1">EventLog</span><span class="s2">.</span><span class="s1">getInstance</span><span class="s2">());</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">exit</span><span class="s2">(</span><span class="s5">0</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Main method to start the application</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s0">new </span><span class="s1">MainMenuPanel</span><span class="s2">();</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

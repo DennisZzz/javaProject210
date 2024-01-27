@@ -1,0 +1,9 @@
+{
+    "balance": 500,
+    "historyList": [{
+        "result": "Loss",
+        "amount": -500
+    }],
+    "name": "DDDD",
+    "age": 21
+}

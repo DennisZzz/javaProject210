@@ -1,0 +1,15 @@
+{
+  "balance": 3000,
+  "historyList": [
+    {
+      "result": "Win",
+      "amount": 100.00
+    },
+    {
+      "result": "Loss",
+      "amount": 200.00
+    }
+  ],
+  "name": "Cosine",
+  "age": 19
+}

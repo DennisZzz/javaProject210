@@ -1,0 +1,15 @@
+{
+    "balance": 9750,
+    "historyList": [
+        {
+            "result": "Loss",
+            "amount": 100
+        },
+        {
+            "result": "Loss",
+            "amount": 150
+        }
+    ],
+    "name": "DDD",
+    "age": 23
+}
